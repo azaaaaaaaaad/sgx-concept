@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 
 
 const Navbar = () => {
@@ -18,15 +19,25 @@ const Navbar = () => {
     }
     return (
         <div>
-            <div className="navbar bg-base-100 shadow-lg px-4 fixed z-10">
+            <div className="navbar bg-base-100 shadow-lg px-4 sm:px-8 fixed z-10">
                 <div className="flex-1">
-                    <a className="btn btn-ghost text-2xl font-bold gap-0 text-secondary normal-case">S<span className="text-primary">G</span>X</a>
+                    <Link to={'/'} className="btn btn-ghost text-2xl font-bold gap-0 text-secondary normal-case">S<span className="text-primary">G</span>X</Link>
                 </div>
-                <div className="flex-none">
-                    <ul className="menu menu-horizontal px-1 font-bold">
-                        <li><a>Home</a></li>
-                        <li><a className="text-primary">Blogs</a></li>
-                        <li><a>Bookmarks</a></li>
+                <div className="flex-none gap-2">
+                    <ul className="menu menu-horizontal px-1 gap-4 hidden sm:flex">
+                        <NavLink to={'/'} className={({ isActive }) =>
+                            isActive ? 'text-primary font-bold' : 'font-bold'}>
+                            Home
+                        </NavLink>
+                        <NavLink to={'/blogs'} className={({ isActive }) =>
+                            isActive ? 'text-primary font-bold' : 'font-bold'}>
+                            Blogs
+                        </NavLink>
+                        <NavLink to={'/bookmarks'} className={({ isActive }) =>
+                            isActive ? 'text-primary font-bold' : 'font-bold'}>
+                            Bookmarks
+                        </NavLink>
+
 
                     </ul>
                     <label className="flex cursor-pointer gap-2">
